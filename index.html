@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Soumya ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 45px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      width: 330px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 15px;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>
+      💕 Soumya 💕<br><br>
+      Will you be my Valentine?
+    </h1>
+    <button id="yes" onclick="yesClicked()">Yes</button>
+    <button id="no" onmouseover="moveNo()">No</button>
+  </div>
+
+  <script>
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          background:linear-gradient(135deg, #ffdde1, #ee9ca7);
+          font-family:'Poppins', sans-serif;
+          text-align:center;
+          padding:30px;">
+          <h1 style="font-size:22px; color:#fff;">
+            💖 Happy Valentine’s Day 💖<br><br>
+            Thank you for coming into my life<br>
+            and making it more beautiful.<br><br>
+            I love you so so much baby ❤️
+          </h1>
+        </div>
+      `;
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 400);
+  </script>
+
+</body>
+</html>
