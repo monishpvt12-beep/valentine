@@ -2,139 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Soumya ❤️</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Soumya ❤️</title>
 
   <style>
     body {
       margin: 0;
       height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
       display: flex;
-      justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      justify-content: center;
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
     }
 
     .card {
       background: white;
-      padding: 45px;
       border-radius: 25px;
+      padding: 30px;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      width: 330px;
+      width: 350px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       position: relative;
     }
 
+    .card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
     h1 {
-      font-size: 22px;
-      margin-bottom: 25px;
+      color: #ff4d88;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      min-height: 40px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      height: 80px;
     }
 
     button {
-      padding: 12px 28px;
-      font-size: 16px;
+      font-size: 18px;
+      padding: 10px 25px;
+      border-radius: 20px;
       border: none;
-      border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    #yes {
-      background: #ff4d6d;
-      color: white;
-      margin-right: 15px;
-    }
-
-    #yes:hover {
-      transform: scale(1.1);
-    }
-
-    #no {
-      background: #ddd;
       position: absolute;
     }
 
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 5s linear infinite;
+    .yes {
+      background: #ff4d88;
+      color: white;
+      left: 40px;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100vh); opacity: 0; }
+    .no {
+      background: #ddd;
+      right: 40px;
     }
   </style>
 </head>
 <body>
 
   <div class="card">
+    <img src="front.png" alt="Cute illustration">
 
+    <h1>💕 Soumya 💕</h1>
+    <p id="message">Will you be my Valentine? 💖</p>
 
-  <div style="font-size:80px; margin-bottom:10px;">
-  🧸
-</div>
-
-<h1 style="font-size:46px; margin-bottom:0;">
-  Soumya
-</h1>
-
-<p style="font-size:26px; margin-top:5px;">
-  Will you be my Valentine? 💘
-</p>
-
-    </h1>
-    <button id="yes" onclick="yesClicked()">Yes</button>
-<button id="no" onmouseover="moveNo()">No</button>
-<p style="margin-top:15px; color:#ff4d6d; font-size:14px;">
-  No seems a bit shy 😈
-</p>
+    <div class="buttons">
+      <button class="yes" onclick="yesClick()">Yes</button>
+      <button class="no" id="noBtn" onmouseover="moveNo()">No</button>
+    </div>
   </div>
 
   <script>
+    const messages = [
+      "Aww come on 🥺",
+      "That button looks shy 😈",
+      "Are you sure? I’m really cute 💕",
+      "Don’t break my heart 💔",
+      "Okay… last chance 😭",
+      "You know you want to 😏",
+      "Stop teasing meeee 💖"
+    ];
+
+    let msgIndex = 0;
+
     function moveNo() {
-      const noBtn = document.getElementById("no");
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
+      const noBtn = document.getElementById("noBtn");
+      const card = document.querySelector(".card");
+
+      const maxX = card.offsetWidth - noBtn.offsetWidth;
+      const maxY = card.offsetHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
+
+      document.getElementById("message").innerText = messages[msgIndex];
+      msgIndex = (msgIndex + 1) % messages.length;
     }
 
-    function yesClicked() {
+    function yesClick() {
       document.body.innerHTML = `
         <div style="
           display:flex;
-          justify-content:center;
           align-items:center;
+          justify-content:center;
           height:100vh;
-          background:linear-gradient(135deg, #ffdde1, #ee9ca7);
-          font-family:'Poppins', sans-serif;
-          text-align:center;
-          padding:30px;">
-          <h1 style="font-size:22px; color:#fff;">
-            💖 Happy Valentine’s Day 💖<br><br>
-            Thank you for coming into my life<br>
-            and making it more beautiful.<br><br>
-            I love you so so much baby ❤️
-          </h1>
-        </div>
-      `;
+          font-family:Poppins;
+          background:linear-gradient(135deg,#ffb6c1,#ffeef5);
+          text-align:center;">
+          <h1>YAYYY 💖🎉<br>I love you so much Soumya 🥰</h1>
+        </div>`;
     }
-
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }, 400);
   </script>
 
 </body>
