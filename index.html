@@ -5,6 +5,22 @@
   <title>Soumya ❤️</title>
 
   <style>
+    @keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.romantic-gif {
+  width: 220px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  animation: softBounce 2s infinite ease-in-out;
+}
+
     body {
       margin: 0;
       height: 100vh;
@@ -73,7 +89,12 @@
 <body>
 
   <div class="card">
-    <img src="front.png" alt="Cute illustration">
+    <img 
+  src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+  alt="Romantic gif"
+  class="romantic-gif"
+/>
+
 
     <h1>💕 Soumya 💕</h1>
     <p id="message">Will you be my Valentine? 💖</p>
